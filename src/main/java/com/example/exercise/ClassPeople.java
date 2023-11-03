@@ -1,9 +1,19 @@
 package com.example.exercise;
 
 public class ClassPeople {
+    private int id;
     private String name;
     private String lastName;
     private int age;
+
+    // ID
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     // NAME
     public String getName() {
@@ -32,8 +42,8 @@ public class ClassPeople {
         this.age = age;
     }
 
-
-    public ClassPeople(String name, String lastName, int age) {
+    public ClassPeople(int id, String name, String lastName, int age) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.age = age;

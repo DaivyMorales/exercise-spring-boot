@@ -17,21 +17,38 @@
     <title>People List</title>
 </head>
 
-<body class="w-screem h-screen flex justify-center items-center flex-col">
-    <h1 class="text-4xl font-bold">People List</h1>
+<body class="w-screem h-screen flex justify-center items-center flex-col gap-4">
+    <div class="flex justify-center items-center gap-3">
+        <h1 class="text-4xl font-bold">People List</h1>
+        <a class="text-xs bg-black p-2 text-white rounded-md font-semibold" href="/formPeople">New Person</a>
+    </div>
     <table>
         <thead class="bg-gray-200 p-2">
             <tr class="">
-                <td>Name</td>
-                <td>LastName</td>
-                <td>Age</td>
+                <td class="font-semibold p-2">Id</td>
+                <td class="font-semibold p-2">Name</td>
+                <td class="font-semibold p-2">LastName</td>
+                <td class="font-semibold p-2">Age</td>
+                <td class="font-semibold p-2">Actions</td>
             </tr>
         </thead>
         <tbody>
             <tr th:each="person:${list}">
-                <td th:text="${person.name}"></td>
-                <td th:text="${person.lastName}"></td>
-                <td th:text="${person.age}"></td>
+                <td class="p-2" th:text="${person.id}"></td>
+                <td class="p-2" th:text="${person.name}"></td>
+                <td class="p-2" th:text="${person.lastName}"></td>
+                <td class="p-2" th:text="${person.age}"></td>
+                <td class="py-2 px-5">
+                    <a th:href="@{delete(id=${person.id})}">
+                        <input type="button" value="Delete"
+                            class="cursor-pointer text-white font-semibold bg-red-500 p-1 rounded-md text-xs">
+                    </a>
+                    <a th:href="@{formUpdatePeople(id=${person.id})}">
+                        <input type="button" value="Update"
+                            class="cursor-pointer text-white font-semibold bg-blue-500 p-1 rounded-md text-xs">
+                    </a>
+                </td>
+
             </tr>
         </tbody>
     </table>

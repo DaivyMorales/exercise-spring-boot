@@ -1,22 +1,33 @@
 package com.example.exercise;
 
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ServicePeople {
-    static List<ClassPeople> people = new ArrayList<ClassPeople>();
 
-    static {
-        ClassPeople p1 = new ClassPeople("Daivy", "Morales", 18);
-        ClassPeople p2 = new ClassPeople("Juan", "Garzon", 19);
+    public ClassPersonRepository personRepository;
 
-        people.add(p1);
-        people.add(p2);
+    public ServicePeople(ClassPersonRepository personRepository) {
+        this.personRepository = personRepository;
     }
 
     public List<ClassPeople> getPeople() {
-        return people;
+        return personRepository.showPeople();
+    }
+
+    // POST
+    public void postPeople(ClassPeople person) {
+        personRepository.insertPeople(person);
+    }
+
+    // DELETE
+    public void deletePeople(ClassPeople person) {
+        personRepository.deletePeople(person);
+    }
+
+    // DELETE
+    public void updatePeople(ClassPeople person) {
+        personRepository.updatePeople(person);
     }
 }

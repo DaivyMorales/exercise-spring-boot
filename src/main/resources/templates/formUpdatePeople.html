@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .border-1 {
+            border-width: 1px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="update">
+        <div class="w-screen h-screen flex justify-center items-center ">
+            <div th:each = "persona:${list}" class="flex flex-col justify-start py-2 items-center gap-2">
+                <h2 class="font-bold text-2xl">New person</h2>
+                <input type="hidden" name="id" placeholder="id" id="id" th:value="${person.id}"
+                    class="text-sm  h-6 rounded-md px-1 border-1 border-gray-200 py-2">
+                <input type="text" name="name" placeholder="Name" id="name" th:value="${person.name}
+                    class="text-sm  h-6 rounded-md px-1 border-1 border-gray-200 py-2">
+                <input type="text" name="lastName" placeholder="Last Name" id="lastName" th:value="${person.lastName}
+                    class="text-sm  h-6 rounded-md px-1 border-1 border-gray-200 py-2">
+                <input type="number" name="age" placeholder="Age" id="age" th:value="${person.age}
+                    class="text-sm h-6 rounded-md px-1 border-1 border-gray-200 py-2">
+                <button type="submit"
+                    class="bg-black rounded-md text-white w-full text-sm font-semibold py-1">Send</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
